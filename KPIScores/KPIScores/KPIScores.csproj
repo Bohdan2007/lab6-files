@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Предмети\**" />
+    <EmbeddedResource Remove="Предмети\**" />
+    <None Remove="Предмети\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="КПІ\Історія науки і техніки\scores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="КПІ\Алгоритми та структури даних. Частина 2. Структури даних\scores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="КПІ\Компоненти програмної інженерії. Частина 1. Вступ до програмной інженерії\scores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="КПІ\Математичний аналіз. Частина 2. Диференціальне та інтегральне числення функцій багатьох змінних\scores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="КПІ\Основи здорового способу життя\scores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="КПІ\Основи комп%27ютерних систем і мереж\scores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="КПІ\Основи програмування. Частина 2. Методології програмування\scores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="КПІ\Практичний курс іноземної мови. Частина 1\scores.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
