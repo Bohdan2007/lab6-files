@@ -11,7 +11,21 @@
         /// </summary>
         public void PrintTree(string root, int indent = 0)
         {
-            throw new NotImplementedException();
+            if (root == null)
+            {
+                Console.WriteLine("Директорія не існує");
+            }
+
+            foreach (var i in Directory.GetFiles(root))
+            {
+                var info = new FileInfo(i);
+                Console.WriteLine($"{info.Name} ({info.Length})");
+            }
+
+            foreach (var i in Directory.GetDirectories(root))
+            {
+                PrintTree(i, indent++);
+            }
         }
     }
 }

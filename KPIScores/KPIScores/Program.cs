@@ -1,4 +1,5 @@
-﻿using KPIScores.Readers;
+﻿using KPIScores.Models;
+using KPIScores.Readers;
 using KPIScores.Utils;
 using KPIScores.Writers;
 using System;
@@ -34,6 +35,20 @@ namespace KPIScores
 
             // TODO: Створити об’єкт DirectoryPrinter і рекурсивно вивести у консоль
             //       структуру папки "КПІ" з розмірами кожного файлу
+
+            var subjectLoader = new SubjectLoader();
+            var list = new List<Subject>();
+            list = subjectLoader.LoadSubjects("C:\\Users\\ASUS\\Desktop\\Прога\\lab6-files\\KPIScores\\KPIScores\\КПІ");
+
+            var gradesCalculator = new GradesCalculator();
+            var a = gradesCalculator.CalculateAveragePerSubject(list);
+            var b = gradesCalculator.CalculateOverallAverage(list);
+
+            var resultsWriter = new ResultsWriter();
+            resultsWriter.Write("C:\\Users\\ASUS\\Desktop\\Прога\\lab6-files\\KPIScores\\KPIScores\\result.txt", a, b);
+
+            //var directoryPrinter = new DirectoryPrinter();
+            //directoryPrinter.PrintTree("C:\\Users\\ASUS\\Desktop\\Прога\\lab6-files\\KPIScores\\KPIScores\\КПІ");
 
         }
     }

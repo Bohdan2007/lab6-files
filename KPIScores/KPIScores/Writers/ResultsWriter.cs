@@ -13,7 +13,16 @@
             // TODO: Відкрити StreamWriter(path, overwrite)
             // TODO: Для кожної пари в averages --> WriteLine("{Key} {Value:F2}")            
             // TODO: WriteLine($"{overall:F2}")
-            throw new NotImplementedException();
+            //var list = new List<string>();
+
+            using (StreamWriter i = new StreamWriter(path))
+            {
+                foreach (var item in averages)
+                {
+                    i.WriteLine($"{item.Key}: {item.Value}");
+                }
+                i.WriteLine($"Overall average {overall:F2}");
+            }
         }
     }
 }

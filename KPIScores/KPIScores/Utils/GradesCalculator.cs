@@ -16,7 +16,22 @@ namespace KPIScores.Utils
             // TODO: Для кожного Subject:
             //   - якщо Scores не пустий --> Average(e => e.Score)
             //   - інакше --> 0.0
-            throw new NotImplementedException();
+            var averages = new Dictionary<string, double>();
+
+            foreach (var subject in subjects)
+            {
+                if (subject.Scores.Count > 0)
+                {
+                    double avg = subject.Scores.Average(e => e.Score);
+                    averages[subject.Name] = avg;
+                }
+                else 
+                {
+                    averages[subject.Name] = 0.0;
+                }
+            }
+
+            return averages;    
         }
 
         /// <summary>
@@ -24,7 +39,23 @@ namespace KPIScores.Utils
         /// </summary>
         public double CalculateOverallAverage(IEnumerable<Subject> subjects)
         {
-            throw new NotImplementedException();
+            var overall = new Dictionary<string, double>();
+            overall = CalculateAveragePerSubject(subjects);
+            double sum = 0;
+            if (overall.Count == 0)
+            {
+                return 0;
+            }
+            else 
+            { 
+                foreach (var subject in overall)
+                {
+                    sum += subject.Value;
+                }
+            }
+
+
+            return sum/ overall.Count;
         }
     }
 }
