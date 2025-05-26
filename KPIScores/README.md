@@ -1,4 +1,4 @@
-﻿```markdown
+﻿````markdown
 # KPI Scores
 
 Програма зчитує оцінки зі структури каталогів `КПІ`, обчислює середній бал по кожному предмету та загальний середній, записує результати у файл `results.txt` і виводить у консоль рекурсивну структуру папки `КПІ` з розмірами файлів.
@@ -7,26 +7,24 @@
 
 ## Структура проєкту
 
-```
-
+```text
 /KPIScores
 │
-├─ /КПІ              ← Ваша папка з підпапками-предметами
+├─ /КПІ                    ← папка з підпапками-предметами
 │   ├─ /Subject1
-│   │   └─ scores.txt  (рядки формату: "<score> \<dd.MM.yyyy>")
+│   │   └─ scores.txt      (рядки формату: "<score> <dd.MM.yyyy>")
 │   ├─ /Subject2
 │   │   └─ scores.txt
 │   └─ … (інші предмети)
 │
-├─ ScoreEntry.cs
-├─ Subject.cs
-├─ SubjectLoader.cs   ← містить TODO для зчитування файлів
-├─ GradesCalculator.cs← містить TODO для обчислення середніх
-├─ ResultsWriter.cs   ← містить TODO для запису в файл
-├─ DirectoryPrinter.cs← містить TODO для виводу дерева папок
-├─ Program.cs         ← містить TODO кроків виконання
-└─ README.md          ← цей файл
-
+├─ ScoreEntry.cs           ← описує одну оцінку з датою
+├─ Subject.cs              ← модель предмета з колекцією ScoreEntry
+├─ SubjectLoader.cs        ← містить TODO для зчитування файлів
+├─ GradesCalculator.cs     ← містить TODO для обчислення середніх
+├─ ResultsWriter.cs        ← містить TODO для запису результатів
+├─ DirectoryPrinter.cs     ← містить TODO для виводу дерева каталогів
+├─ Program.cs              ← містить TODO для послідовності кроків Main
+└─ README.md               ← цей файл
 ````
 
 ---
@@ -37,59 +35,59 @@
 
    ```bash
    git clone <URL_репозиторію>
-   cd KPI_GradesReader
-````
+   cd KPIScores
+   ```
 
-2. **Налаштувати копіювання папки `КПІ`**
+2. **Налаштувати Copy to Output Directory**
+   У Visual Studio / VS Code:
 
-   * У Visual Studio / VS Code:
+   * Виберіть папку `КПІ`
+   * Властивості → **Copy to Output Directory** → **Copy if newer**
 
-     * Виберіть папку `КПІ` в Explorer.
-     * Властивості → **Copy to Output Directory** → **Copy if newer**.
-
-3. **Реалізувати `TODO`-заглушки**
+3. **Реалізувати TODO**
 
    * **SubjectLoader.cs**
 
      ```csharp
      public List<Subject> LoadSubjects(string kpiDir)
      {
-         // TODO: …
+         // TODO: прочитати всі підпапки, зчитати scores.txt ("<score> <dd.MM.yyyy>") → List<ScoreEntry>
          throw new NotImplementedException();
      }
      ```
-
-     – зчитати всі підпапки, парсити `scores.txt` рядки `<score> <dd.MM.yyyy>`.
-
    * **GradesCalculator.cs**
 
      ```csharp
-     public Dictionary<string,double> CalculateAveragePerSubject(...) { /* TODO */ }
-     public double CalculateOverallAverage(...) { /* TODO */ }
+     public Dictionary<string,double> CalculateAveragePerSubject(...)
+     {
+         // TODO: порахувати середній для кожного предмету
+         throw new NotImplementedException();
+     }
+
+     public double CalculateOverallAverage(...)
+     {
+         // TODO: порахувати загальний середній по всіх оцінках
+         throw new NotImplementedException();
+     }
      ```
-
-     – порахувати середній бал по кожному предмету та загальний.
-
    * **ResultsWriter.cs**
 
      ```csharp
      public void Write(string path, Dictionary<string,double> avg, double overall)
      {
-         // TODO: відкрити StreamWriter, записати avg і overall
+         // TODO: записати avg і overall у файл results.txt
          throw new NotImplementedException();
      }
      ```
-
    * **DirectoryPrinter.cs**
 
      ```csharp
      public void PrintTree(string root, int indent=0)
      {
-         // TODO: рекурсивно друкувати папки та файли із розмірами
+         // TODO: рекурсивно виводити папки та файли із розмірами в байтах
          throw new NotImplementedException();
      }
      ```
-
    * **Program.cs**
 
      ```csharp
@@ -98,12 +96,10 @@
          Console.OutputEncoding = Encoding.UTF8;
 
          // TODO: визначити projectDir і kpiDir
-         // TODO: завантажити subjects через SubjectLoader
+         // TODO: зчитати subjects через SubjectLoader
          // TODO: обчислити avgBySubj і overall через GradesCalculator
          // TODO: записати results.txt через ResultsWriter
-         // TODO: повідомити про успіх у консолі
-         // TODO: надрукувати структуру через DirectoryPrinter
-
+         // TODO: вивести структуру через DirectoryPrinter
          throw new NotImplementedException();
      }
      ```
@@ -117,7 +113,7 @@
 
 5. **Перевірка результатів**
 
-   * Файл **results.txt** в корені проєкту містить:
+   * `results.txt` має містити середні бали по предметах та загальний середній:
 
      ```
      Subject1: 85.50
@@ -137,4 +133,4 @@
        …
      ```
 
----
+```
